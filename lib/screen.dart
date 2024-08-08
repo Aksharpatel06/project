@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project/controller.dart';
 import 'package:project/firebase_sarvice.dart';
+import 'package:project/google_sign_in.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -38,7 +40,10 @@ class HomeScreen extends StatelessWidget {
                   homeController.signUp(
                       homeController.txtEmail.text, homeController.txtPwd.text);
                 },
-                child: const Text('Submit'))
+                child: const Text('Submit')),
+            SignInButton(Buttons.google, onPressed: () async {
+              await GoogleSignInSarvice.googleSignInSarvice.signInWithGoogle();
+            }),
           ],
         ),
       ),
